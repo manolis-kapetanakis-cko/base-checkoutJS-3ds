@@ -1,0 +1,318 @@
+:root {
+  --payment-form-width: 320px;
+  --input-height: 50px;
+  --input-font-size: 14px;
+  --input-placeholder-font-size: 14px;
+  --white: #fff;
+  --black: #000;
+  --light-gray: #e2e2e2;
+  --medium-gray: #e5e5e5;
+  --gray: #b2b2b2;
+  --dark-gray: #7c7c7c;
+  --darker-gray: #292929;
+  --light-red: #d96830;
+  --red: #ec5f77;
+  --blue-green: #6cc3b4;
+  --green: #64d39b;
+  --yellow: #ffa41b;
+}
+
+.light {
+  --background: var(--white);
+  --input-text: var(--black);
+  --input-border: var(--light-gray);
+  --input-border-focus: var(--gray);
+  --input-border-error: var(--light-red);
+  --input-border-success: var(--green);
+  --placeholder: var(--light-gray);
+  --label: var(--medium-gray);
+  --label-focus: var(--gray);
+  --button-background-disabled: var(--light-gray);
+  --button-background: var(--blue-green);
+  --button-background-error: var(--red);
+  --button-text: var(--white);
+  --switch-moon-color: var(--white);
+  --switch-sun-color: var(--yellow);
+  --switch-border-color: var(--white);
+  --confirmation-text: var(--darker-gray);
+  --back-button: var(--dark-gray);
+}
+
+.dark {
+  --background: var(--black);
+  --input-text: var(--white);
+  --input-border: var(--darker-gray);
+  --input-border-focus: var(--dark-gray);
+  --input-border-error: var(--light-red);
+  --input-border-success: var(--green);
+  --placeholder: var(--dark-gray);
+  --label: var(--white);
+  --label-focus: var(--light-gray);
+  --button-background-disabled: var(--darker-gray);
+  --button-background: var(--white);
+  --button-background-error: var(--red);
+  --button-text: var(--black);
+  --switch-moon-color: var(--white);
+  --switch-sun-color: var(--yellow);
+  --switch-border-color: var(--white);
+  --confirmation-text: var(--white);
+  --back-button: var(--gray);
+}
+body {
+  background: var(--background);
+}
+* {
+  padding: 0;
+  margin: 0;
+  outline: none;
+  font-family: Arial;
+  letter-spacing: 0.5px;
+}
+.hide {
+  display: none;
+}
+
+.paymentDetails {
+  color: #fff;
+  font-size: 16px;
+  font-family: "Open Sans", sans-serif;
+}
+
+.try-again {
+  background-color: rgb(38, 163, 150);
+  color: rgb(255, 255, 255);
+  border: 0 none transparent;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 14px;
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  letter-spacing: -0.2px;
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+  font-weight: bold;
+  border-radius: 2px;
+  margin: 0;
+  padding: 0 10px;
+  line-height: 40px;
+  height: 40px;
+  box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.2);
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  float: none;
+  left: 0;
+  vertical-align: top;
+  min-width: 110px;
+  transition: opacity 0.5s;
+}
+
+.whDiv_body {
+  /* margin: 4px; */
+  padding: 12px;
+  text-transform: capitalize;
+  font-size: 13px;
+  width: 250px;
+  margin: 0 auto;
+  position: relative;
+  top: 80px;
+  /* color: var(--pay-button-color);*/
+  border-radius: 25px;
+  border: 1px solid;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+}
+
+.whDiv_body.show {
+  visibility: visible;
+  opacity: 1;
+  transition-delay: 0s;
+}
+
+.whDiv_body .wh_div {
+  width: 30%;
+  border-right: 1px solid;
+  display: inline-block;
+  margin-left: 25px;
+}
+
+.whDiv_body .pt_div {
+  display: inline-block;
+  margin-left: 8px;
+}
+
+/* Outcome pages */
+
+.confirmation {
+  color: var(--confirmation-text);
+  width: var(--payment-form-width);
+  position: absolute;
+  left: 50%;
+  top: 46.5%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.card-confirmation {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+}
+
+#message {
+  position: relative;
+  top: 15px;
+}
+
+#scheme {
+  height: 150%;
+  width: 150%;
+  position: relative;
+  top: 30px;
+  left: 87px;
+}
+
+#last-four {
+  position: absolute;
+  top: 36px;
+  left: 135px;
+  letter-spacing: 1px;
+}
+
+#confirm-animation {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 22%;
+  left: 50%;
+  margin-top: -130px;
+  margin-left: -50px;
+  width: 100px;
+  height: 100px;
+}
+
+#confirm-animation.checkmark.draw:after {
+  animation-name: checkmark-outcome;
+  animation-fill-mode: forwards;
+}
+
+#confirm-animation.checkmark:after {
+  position: absolute;
+  top: 106%;
+  left: 76%;
+  margin-top: -50px;
+  margin-left: -50px;
+  border-right: 3px solid var(--white);
+  border-top: 3px solid var(--white);
+  opacity: 1;
+}
+
+@keyframes checkmark-outcome {
+  0% {
+    height: 0;
+    width: 0;
+    opacity: 1;
+  }
+  20% {
+    height: 0;
+    width: 1.13em;
+    opacity: 1;
+  }
+  40% {
+    height: 3em;
+    width: 1.13em;
+    opacity: 1;
+  }
+  60% {
+    height: 3em;
+    width: 1.13em;
+    opacity: 1;
+  }
+  80% {
+    height: 3em;
+    width: 1.13em;
+    opacity: 1;
+  }
+  100% {
+    height: 3em;
+    width: 1.13em;
+    opacity: 1;
+  }
+}
+
+.text-appear {
+  animation-name: text-appear;
+  animation-duration: 1.5s;
+}
+@keyframes text-appear {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 1.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#confirm-animation .cross {
+  height: 75px;
+  width: 75px;
+  left: 13px;
+  top: 13px;
+  stroke: var(--white);
+}
+
+#confirm-animation .cross .draw {
+  animation: outcome-stroke 1.2s cubic-bezier(0.3, 0.75, 0.3, 1) forwards;
+}
+
+@keyframes outcome-stroke {
+  0% {
+    width: 50px;
+    height: 50px;
+    opacity: 1;
+  }
+  80% {
+    width: 25px;
+    height: 25px;
+    opacity: 1;
+  }
+  85% {
+    width: 25px;
+    height: 25px;
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    width: 25px;
+    height: 25px;
+    opacity: 1;
+  }
+}
+
+.back {
+  border-radius: 50px;
+  box-shadow: 0 2px 5px 0 var(--input-border-focus);
+  background-color: var(--background);
+  font-weight: 600;
+  font-size: 15px;
+  height: var(--input-height);
+  width: 150px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  top: 100px;
+  color: var(--back-button);
+}
+
+.back:hover {
+  color: var(--label-focus);
+}

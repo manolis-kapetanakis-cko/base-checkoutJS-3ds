@@ -1,2 +1,2 @@
-# base-checkoutJS-3ds
+# base-checkoutJS
 Created with CodeSandbox

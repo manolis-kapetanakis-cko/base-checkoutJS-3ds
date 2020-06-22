@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Payment Demo</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="icon" href="./images/favicon.ico" type="image/ico" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+  </head>
+
+  <body class="light">
+    <script>
+      window.CKOConfig = {
+        publicKey: "pk_test_7d9921be-b71f-47fa-b996-29515831d911",
+        //Widget setup
+        paymentMode: "cards",
+        cardFormMode: "cardTokenisation",
+        paymentMode: "cards",
+        countryCode: "GB",
+        renderMode: 1,
+        //Payment Details
+        customerEmail: "user@email.com",
+        value: 14842,
+        currency: "GBP",
+        billingDetails: {
+          addressLine1: "623 Slade Street",
+          addressLine2: "Apartment 8",
+          postcode: "31313",
+          country: "US",
+          city: "Hinesville",
+          phone: { number: "9125084652" }
+        },
+        //Customise
+        payButtonSelector: ".customButton" || "#customButton",
+        buttonLabel: "Pay Now",
+        widgetColor: "#c3d6d4",
+        buttonColor: "#26a396",
+        buttonLabelColor: "#fff",
+
+        title: "Merchant",
+        subtitle: "Fill in your card details",
+        logoUrl: "https://docs.checkout.com/img/merchant-logo.png",
+        formButtonLabel: "Complete Purchase",
+        formButtonColor: "#26a396",
+        formButtonLabelColor: "#fff",
+        overlayShade: "light",
+        cardTokenised: function(event) {
+          console.log("TOKEN: " + event.data.cardToken);
+          payWithToken(event.data.cardToken);
+        }
+      };
+    </script>
+
+    <script
+      async
+      src="https://cdn.checkout.com/sandbox/js/checkout.js"
+    ></script>
+
+    <!-- Our scripts -->
+    <script src="./payment/script.js"></script>
+  </body>
+</html>
